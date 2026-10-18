@@ -30,71 +30,29 @@ Contributions welcome! Open a PR to add/update entries. Keep descriptions factua
 
 ## Table of Contents
 
+- [Sector Overview & Market Dynamics](#sector-overview--market-dynamics)
 - [SaaS/Hosted Platforms](#saas-hosted-platforms)
-
 - [Open-Source GitHub Projects](#open-source-github-projects)
-
 - [How to Contribute](#how-to-contribute)
-
 - [Disclaimer](#disclaimer)
 
+## Sector Overview & Market Dynamics
 
+The global data lake and lakehouse market is estimated at approximately **$18B to $24B in 2026** (scaling from ~$16B–$19B in 2024–2025 at a >20% CAGR, on trajectory toward $70B+ by the early 2030s). The sector exhibits a **hybrid market structure with high concentration among top cloud hyper-scalers and platform titans** (Databricks, Snowflake, AWS, Microsoft, Google capturing the vast majority of enterprise spend), coexisting with a **moderately fragmented ecosystem** of independent query engines, specialized catalogs, and open table formats (Apache Iceberg, Delta Lake, Trino) competing for multi-cloud and vendor-neutral deployments.
 
 ## SaaS/Hosted Platforms
 
-
-
-- **[Databricks (Delta Lake)](https://www.databricks.com/)**  
-
-  **The lakehouse platform built by the original creators of Apache Spark** . **Delta Lake** provides ACID transactions, schema enforcement, and time travel on data lakes . **Unity Catalog** governs **17+ exabytes of data in open table formats** across enterprise deployments . **Photon engine** accelerates query execution. **Delta Lake 4.x** introduces **catalog-managed tables** and **coordinated commits** for multi-writer scenarios . **Note**: **Delta Lake's tooling is partially under the Business Source License**—slower integration for some non-Spark engines compared to fully open specifications . **The most widely deployed lakehouse platform** with the largest installed base.
-
-
-
-- **[Snowflake](https://www.snowflake.com/)**  
-
-  **Cloud data warehouse that pivoted to open formats** . **Apache Iceberg tables are now GA** with **Polaris Catalog** open-sourced as the foundation of Snowflake's Open Catalog offering . **Snowflake Horizon** provides governance across structured and unstructured data . **The strategic shift**: Snowflake historically suffered from **vendor lock-in**—private storage format, closed ecosystem. **Polaris and Iceberg support represent a significant opening** , though **Polaris is now in Apache Incubation** and adoption remains early . **Pricing**: **Credit-based** with transparent unit pricing but higher per-unit costs than competitors .
-
-
-
-- **[Google BigQuery](https://cloud.google.com/bigquery)**  
-
-  **Serverless data warehouse with managed Iceberg tables** . **BigQuery supports Apache Iceberg natively**—query Iceberg tables alongside native BigQuery tables . **BigQuery Omni** queries data across AWS and Azure . **The most serverless option**—no infrastructure to manage, automatic scaling, pay-per-query.
-
-
-
-- **[Dremio](https://www.dremio.com/)**  
-
-  **Lakehouse platform built on Apache Iceberg** . **Dremio Cloud** provides a fully managed lakehouse with **Iceberg REST Catalog compatibility**, autonomous reflections, and elastic engines that scale to zero . **The Iceberg-native choice**—treats Iceberg as the primary table format, not an add-on.
-
-
-
-- **[Starburst Galaxy](https://www.starburst.io/)**  
-
-  **Fully managed Trino service for federated analytics** . **Query across data lakes, databases, and warehouses** without data movement . **The commercial arm of the open-source Trino project** . **Best for**: federated queries across heterogeneous sources where Iceberg is one of many formats.
-
-
-
-- **[AWS Lake Formation](https://aws.amazon.com/lake-formation/)**  
-
-  **Managed data lake service on AWS** . Features **centralized permissions**, **governance**, and **S3 Tables with native Iceberg support** . **The AWS-native choice** for governing S3-based data lakes.
-
-
-
-- **[Microsoft OneLake (Fabric)](https://www.microsoft.com/en-us/microsoft-fabric)**  
-
-  **Unified data lake for Microsoft Fabric** . Features **OneLake Shortcuts** for cross-cloud data access, **Delta Lake and Iceberg support**, and **deep integration with Power BI and Microsoft 365** . **The Microsoft ecosystem choice**.
-
-
-
-- **[Cloudera](https://www.cloudera.com/)**  
-
-  **Enterprise data platform with lakehouse capabilities** . **CDP (Cloudera Data Platform)** provides hybrid cloud data management with governance, security, and multi-function analytics. **The surviving enterprise Hadoop distribution** after the 2018 Cloudera-Hortonworks merger .
-
-
-
-- **[Tabular (Databricks)](https://tabular.io/)**  
-
-  **Iceberg-focused data platform acquired by Databricks** for **over a billion dollars** (2024). Founded by **Iceberg's Netflix creators** (Ryan Blue and Dan Weeks) . **The acquisition signal**: Databricks betting on Iceberg interoperability alongside Delta Lake—the format war is ending .
+| Platform | Company | Company Size (Valuation / Revenue) | Description | Starting Pricing (Specific Tier) | Free Tier Limits / Free Trial |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **[Microsoft OneLake (Fabric)](https://www.microsoft.com/en-us/microsoft-fabric)** | Microsoft | **~$3.1 Trillion** market cap | Unified data lake for Microsoft Fabric with OneLake Shortcuts, native Delta Lake/Iceberg format support, and direct Power BI / Office 365 integration. | **$0.36/hour** (Pay-as-you-go for entry **F2 Capacity** [2 CUs @ $0.18/CU-hour]; OneLake storage from $0.023/GB/month) | **60-day free trial** with full platform access (provisioned at F4/F64 capacity equivalence) and up to **1 TB OneLake data storage**. |
+| **[Google BigQuery](https://cloud.google.com/bigquery)** | Alphabet (Google) | **~$2.1 Trillion** market cap | Fully managed, serverless enterprise data warehouse and lakehouse engine with native Apache Iceberg table support and BigQuery Omni cross-cloud queries. | **$6.25 per TB** scanned (On-Demand query pricing; storage at $0.02/GB/month active) | **Perpetual Free Tier**: **1 TB of query data processed per month** and **10 GB of active storage per month** free forever. |
+| **[AWS Lake Formation](https://aws.amazon.com/lake-formation/)** | Amazon (AWS) | **~$1.9 Trillion** market cap | Centralized permissions, security governance, and access control for data lakes on S3, featuring S3 Tables with native Apache Iceberg support. | **$0/month** core governance plane; Storage Optimizer compaction billed at **$0.44 per DPU-hour** | **Perpetual Free Tier**: Lake Formation permissions and catalog governance are **100% free ($0)**; underlying AWS Glue Data Catalog includes **1M objects & 1M requests/month free**. |
+| **[Snowflake](https://www.snowflake.com/)** | Snowflake Inc. | **~$45 Billion** market cap (~$3.6B ARR) | Cloud data platform supporting managed and unmanaged Apache Iceberg tables, open Apache Polaris catalog integration, and Snowflake Horizon governance. | **$2.00 per credit** (Standard Edition on-demand; compressed storage at $23/TB/month) | **30-day free trial** with **$400 in free usage credits** (no credit card required upfront; trial expires at 30 days or $400 consumption). |
+| **[Databricks (Delta Lake)](https://www.databricks.com/)** | Databricks | **~$43 Billion** valuation (~$2.4B+ ARR) | The pioneer lakehouse platform built by the creators of Apache Spark. Features Unity Catalog for cross-engine governance and the Photon query execution engine. | **$0.15 per DBU** (Standard/Jobs batch compute; SQL Serverless from $0.70/DBU; All-Purpose compute from $0.40/DBU) | **14-day free trial** with **$400 in free DBU credits**; also provides a perpetual **Community/Free Edition** for learning (single serverless micro-cluster, 15GB RAM limit, non-production). |
+| **[Cloudera](https://www.cloudera.com/)** | Cloudera (KKR / CD&R) | **~$5.3 Billion** take-private valuation (~$1B ARR) | Enterprise hybrid cloud data platform with lakehouse services (CDP) for data engineering, streaming, and multi-function analytics across private and public clouds. | **$0.04 to $0.07 per CCU-hour** (Cloudera Compute Unit: Data Hub @ $0.04/CCU-hr, Data Warehouse @ $0.07/CCU-hr; 1 CCU ≈ 1 vCPU + 4GB RAM) | **60-day free trial** for CDP Public Cloud (access to data hub, warehouse, and machine learning workspaces; cloud infrastructure billed separately). |
+| **[Starburst Galaxy](https://www.starburst.io/)** | Starburst Data | **~$3.35 Billion** valuation | Fully managed cloud service powered by Trino for fast federated SQL queries across data lakes, catalogs, and hybrid multi-cloud databases without data movement. | **$0.40 to $0.55 per Galaxy Credit** (Standard/Pro compute execution; clusters consume credits based on size and uptime) | **Perpetual Free Tier**: **Up to 3 free concurrent clusters** and community support; also offers a **30-day Enterprise trial** with **$500 in free usage credits**. |
+| **[Dremio](https://www.dremio.com/)** | Dremio | **~$2.0 Billion** valuation | Apache Iceberg-native lakehouse engine featuring an Iceberg REST Catalog, autonomous reflections for query acceleration, and engines that scale to zero. | **$0.20 per DCU** (Dremio Compute Unit: 2XS engine = 32 DCUs/hr @ $6.40/hr; XS engine = 64 DCUs/hr @ $12.80/hr; $0 storage fee when using customer S3/ADLS) | **Standard Community Tier** (free software/engine management with limits up to small engine sizes, 10 users per project); plus a **30-day Cloud trial** with **$400 in free compute credits**. |
+| **[Tabular (Databricks)](https://tabular.io/)** | Databricks (Acquired) | **~$1.0 Billion+** acquisition price | Universal Iceberg storage and catalog management platform created by Apache Iceberg co-creators (Ryan Blue, Dan Weeks); acquired by Databricks in 2024. | **$0.15 to $0.70 per DBU** (Integrated into Databricks platform pricing via UniForm and managed Iceberg catalogs) | **14-day Databricks trial** with **$400 credits** for exploring Tabular-integrated Iceberg features on Databricks. |
 
 
 
